@@ -188,6 +188,9 @@
     width: 50%;
   }
 
+  #panier {
+    height: 110vh;
+  }
   .contentPanier {
     padding-bottom: 7rem;
   }
