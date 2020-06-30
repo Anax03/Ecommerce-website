@@ -2,6 +2,7 @@
 .ChoixProduit {
   margin: 2rem auto;
   width: 80%;
+  padding-bottom: 5rem;
 }
 
 .ChoixProduit #titreProduit {
