@@ -188,6 +188,10 @@
     width: 50%;
   }
 
+  .contentPanier {
+    padding-bottom: 7rem;
+  }
+
   /* Confirmation page */
   .confirmation {
     width: 70%;
