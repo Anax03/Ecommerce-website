@@ -43,6 +43,7 @@ btnConfirmer.addEventListener('click', (e) => {
     inputPostal.value.length == 0,
     inputAdresse.value.length == 0,
     inputEmail.value.length == 0,
+    priceProduit.innerHTML == 0,
   ];
 
   let flag = true;
