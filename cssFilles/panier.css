@@ -1,0 +1,122 @@
+/* Content container  */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@500;700&display=swap');
+background {
+  font-family: 'Roboto', sans-serif;
+}
+.important::after {
+  content: '*';
+  color: red;
+}
+#panier {
+  background: white;
+  width: 90%;
+  margin: 2rem auto;
+  padding: 1.4rem;
+
+  border-radius: 0.4rem;
+}
+
+#panier h1 {
+  font-weight: bolder;
+  border-bottom: 1px outset rgba(196, 196, 196, 0.62);
+  padding-bottom: 0.4rem;
+  width: 100%;
+  margin-bottom: 2rem;
+}
+
+.contentPanier {
+  display: grid;
+  grid-template-columns: 1fr 5fr;
+  width: 100%;
+  border-bottom: 1px outset rgba(196, 196, 196, 0.62);
+  margin: 2rem 0;
+  padding-bottom: 1rem;
+}
+
+.contentPanier img {
+  margin-right: 3rem;
+  height: 100px;
+  border: 1px solid black;
+}
+
+.contentPanier .PanierInfo .first {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px outset rgba(196, 196, 196, 0.62);
+  margin-bottom: 1rem;
+  padding-bottom: 0.4rem;
+}
+
+.first #quantity {
+  width: 50px;
+  height: 30px;
+  text-align: center;
+  border-radius: 0.3rem;
+}
+.PanierInfo .second {
+  display: flex;
+  justify-content: space-between;
+}
+
+.fa-trash-alt {
+  cursor: pointer;
+}
+
+#totalPRice {
+  text-align: right;
+}
+
+/* Contact form */
+.contactForm {
+  -webkit-box-shadow: 0px 2px 9px -5px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 0px 2px 9px -5px rgba(0, 0, 0, 0.75);
+  box-shadow: 0px 2px 9px -5px rgba(0, 0, 0, 0.75);
+  text-align: center;
+  background: white;
+  width: 30%;
+  padding: 1.5rem;
+  margin: 3rem auto;
+  border-radius: 0.3rem;
+}
+.contactForm label {
+  display: block;
+  text-align: start;
+}
+
+.contactForm input {
+  display: block;
+  width: 95%;
+  height: 2rem;
+  padding-left: 0.3rem;
+  border: 1px solid #c0c0c0;
+  margin-bottom: 0.5rem;
+}
+/* Nom prenom */
+.nomprenom {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  margin-bottom: 1rem;
+}
+
+.nomprenom input {
+  width: 90%;
+}
+
+.contactForm .line {
+  width: 90%;
+  border: 1px solid #c0c0c0;
+  margin: 1rem 0;
+}
+
+#confirmButton {
+  font-weight: bolder;
+  cursor: pointer;
+  margin: 2rem 0;
+  display: block;
+  width: 95%;
+  background: #5357ff;
+  color: white;
+  padding: 0.8rem;
+  border: none;
+  border-radius: 0.3rem;
+}

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Panier - Orinoco</title>
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.13.0/css/all.css"
+      integrity="sha384-Bfad6CLCknfcloXFOyFnlgtENryhrpZCe29RTifKEixXQZ38WheV+i/6YWSzkz3V"
+      crossorigin="anonymous"
+    />
+    <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="stylesheet" href="./cssFilles/style.css" />
+    <link rel="stylesheet" href="./cssFilles/panier.css" />
+    <link rel="stylesheet" href="./cssFilles/responsive.css" />
+  </head>
+  <body>
+    <!-- Header -->
+    <header>
+      <a href="index.html"><h1 id="logo">Orinoco</h1></a>
+      <div class="panier">
+        <i class="fas fa-shopping-cart"></i>
+        <h2>Panier</h2>
+      </div>
+    </header>
+    <!-- Panier content -->
+    <section id="panier">
+      <h1>Récapitulatif de votre commande :</h1>
+      <div class="contentPanier">
+        <img src="#" alt="produit" id="ProduitPanier" />
+        <div class="PanierInfo">
+          <div class="first">
+            <h2 id="panierTitre">Titre produit</h2>
+            <input type="number" name="numero" id="quantity" />
+            <h3 id="priceProduit">$ 200</h3>
+          </div>
+          <div class="second">
+            <p class="des">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae
+              veniam at non.
+            </p>
+            <i class="far fa-trash-alt"></i>
+          </div>
+        </div>
+      </div>
+      <h3 id="totalPRice">Total price : $ 300</h3>
+      <div class="contactForm">
+        <div class="nomprenom">
+          <label for="nom" class="important">Nom </label>
+          <label for="prenom" class="important">Prénom </label>
+          <input type="text" name="nom" id="nom" maxlength="15" />
+          <input type="text" name="prenom" id="prenom" maxlength="15" />
+        </div>
+        <label for="email" class="important">Email </label>
+        <input type="email" name="email" id="email" maxlength="30" />
+        <label for="tele">Téléphone </label>
+        <input type="number" name="tele" id="tele" />
+        <div class="line"></div>
+        <h2 id="titreAdresse">Adresse de livraison :</h2>
+        <label for="adresse" class="important">Adresse </label>
+        <input type="text" name="adresse" id="adresse" maxlength="30" />
+        <label for="codepostal" class="important">Code postal </label>
+        <input type="number" name="codepostal" id="codepostal" />
+        <label for="ville" class="important">Ville </label>
+        <input type="text" name="ville" id="ville" maxlength="25" />
+        <label for="pays" class="important">Pays </label>
+        <input type="text" name="pays" id="pays" maxlength="25" />
+        <button type="submit" id="confirmButton">Confirmer</button>
+      </div>
+    </section>
+    <!-- Footer -->
+    <footer>
+      <h1>©️ Copyright - Orinoco</h1>
+      <div class="pages">
+        <i class="fab fa-twitter"></i>
+        <i class="fab fa-facebook"></i>
+        <i class="fab fa-instagram-square"></i>
+      </div>
+    </footer>
+    <script src="./JSfiles/main.js"></script>
+    <script src="./JSfiles/panier.js"></script>
+  </body>
+</html>

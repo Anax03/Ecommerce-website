@@ -1,0 +1,49 @@
+.confirmation {
+  background: white;
+
+  margin: 2rem auto;
+  width: 40%;
+  height: 50rem;
+  text-align: center;
+  border-radius: 0.4rem;
+  padding: 1rem;
+}
+.confirmation h1 {
+  margin-bottom: 1rem;
+}
+.confirmation #confPara {
+  font-size: 1rem;
+  font-style: italic;
+  margin-bottom: 4rem;
+}
+
+.gridContent {
+  margin: 4rem auto;
+  display: grid;
+  gap: 0.8rem;
+  grid-template-columns: 1fr 1fr;
+}
+#prName {
+  text-align: left;
+  margin-bottom: 1rem;
+}
+.orderSummary {
+  text-align: left;
+  display: flex;
+  margin-bottom: 3rem;
+}
+.orderSummary .infoProduit {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 0.3rem;
+}
+
+.orderSummary img {
+  height: 100px;
+  border: 1px solid black;
+  margin-right: 1rem;
+}
+
+.infoProduit h3 {
+  font-size: 0.8rem;
+}

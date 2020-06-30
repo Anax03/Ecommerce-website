@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.13.0/css/all.css"
+      integrity="sha384-Bfad6CLCknfcloXFOyFnlgtENryhrpZCe29RTifKEixXQZ38WheV+i/6YWSzkz3V"
+      crossorigin="anonymous"
+    />
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
+    <link rel="stylesheet" href="./cssFilles/style.css" />
+    <link rel="stylesheet" href="./cssFilles/produit.css" />
+    <link rel="stylesheet" href="./cssFilles/responsive.css" />
+    <title>Produit - Orinoco</title>
+  </head>
+  <body>
+    <!-- Header -->
+    <header>
+      <a href="index.html"><h1 id="logo">Orinoco</h1></a>
+      <div class="panier">
+        <i class="fas fa-shopping-cart"></i>
+        <h2>Panier</h2>
+      </div>
+    </header>
+    <!-- produit sélectionné par l'utilisateur -->
+    <section class="ChoixProduit">
+      <h1 id="titreProduit"></h1>
+      <div class="proprietes">
+        <img alt="produit" />
+        <div class="informations">
+          <h2 id="descTitre">DESCRIPTION DU PRODUIT :</h2>
+          <div id="line"></div>
+
+          <div class="Nmbr">
+            <i class="fas fa-minus" id="btnMinus"></i>
+            <input type="number" name="numero" id="numero" value="1" />
+            <i class="fas fa-plus" id="btnPlus"></i>
+            <strong id="PrixDuProduit"></strong>
+            <button id="ValiderProduit">VALIDER</button>
+          </div>
+          <h1>Varnish :</h1>
+          <div class="selectiona">
+            <select id="varnish" name="varnish"> </select>
+          </div>
+          <p id="descriptionDuProduit"></p>
+        </div>
+      </div>
+    </section>
+    <!-- Footer -->
+    <footer>
+      <h1>©️ Copyright - Orinoco</h1>
+      <div class="pages">
+        <i class="fab fa-twitter"></i>
+        <i class="fab fa-facebook"></i>
+        <i class="fab fa-instagram-square"></i>
+      </div>
+    </footer>
+
+    <script src="./JSfiles/main.js"></script>
+    <script src="./JSfiles/produit.js"></script>
+  </body>
+</html>

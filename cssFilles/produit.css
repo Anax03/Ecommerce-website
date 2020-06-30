@@ -1,0 +1,109 @@
+/* Section choix produit */
+.ChoixProduit {
+  margin: 2rem auto;
+  width: 80%;
+}
+
+.ChoixProduit #titreProduit {
+  font-size: 2rem;
+  margin: 2rem 0;
+}
+/* Container image + description  */
+.proprietes {
+  display: flex;
+  width: 100%;
+}
+/* Box img */
+.proprietes img {
+  display: block;
+  width: 50%;
+  height: 400px;
+  border-radius: 0.4rem;
+  padding: 1rem;
+  background: white;
+  margin-right: 2rem;
+}
+
+/* Box description  */
+.proprietes .informations {
+  background: white;
+  width: 50%;
+
+  position: relative;
+}
+.informations #descTitre {
+  font-size: 1rem;
+  padding: 1.4rem;
+}
+
+/* Line */
+#line {
+  position: absolute;
+  left: 0;
+  border: 0.1px ridge #efefef;
+  width: 100%;
+}
+
+.informations .Nmbr {
+  display: flex;
+  margin-top: 2rem;
+  text-align: center;
+  align-items: center;
+  background: #efefef;
+  padding: 1.4rem;
+}
+
+/* Button valider */
+.informations .Nmbr button {
+  width: 25%;
+  height: 100%;
+  cursor: pointer;
+  border-radius: 15px;
+  font-weight: bolder;
+  margin-left: auto;
+  background: #696969;
+  color: white;
+  padding: 0.4rem 0.6rem;
+  transition: 0.4s ease;
+}
+/* Hover effect button valider */
+.informations .Nmbr button:hover {
+  background: #59ce8f;
+}
+/* Input  */
+.Nmbr #numero {
+  width: 3rem;
+  height: 1.5rem;
+  border: 1px ridge #c4c4c4;
+  text-align: center;
+}
+/* Buttons plus minus */
+.Nmbr .fas {
+  height: 1.5rem;
+  padding: 0.2rem 0.6rem;
+  border: 1px solid rgb(160, 160, 255);
+  cursor: pointer;
+}
+.Nmbr .fa-minus {
+  border-radius: 72px 0px 0px 70px;
+}
+
+.Nmbr .fa-plus {
+  margin-right: 2rem;
+  border-radius: 0px 72px 70px 0px;
+}
+
+.Nmbr strong {
+  font-size: 2rem;
+}
+
+.informations p,
+.informations h1,
+.informations .selectiona {
+  margin: 1.4rem;
+}
+#varnish {
+  width: 40%;
+  height: 2rem;
+  text-align: start;
+}
