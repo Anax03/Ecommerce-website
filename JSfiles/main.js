@@ -15,3 +15,8 @@ class FetchApi {
     return data;
   }
 }
+
+//// Panier linkpage
+document.getElementById('panierPage').addEventListener('click', (e) => {
+  location.href = 'panier.html';
+});
