@@ -56,12 +56,15 @@
     width: 30%;
   }
   /* Panier page */
-  #panier h1 {
-    font-size: 1rem;
+  #panierVide {
+    margin: 5rem auto;
   }
+  #panierVide h1,
+  #panier h1,
   #titreAdresse {
     font-size: 1rem;
   }
+
   .contentPanier {
     grid-template-columns: 1fr;
     justify-content: center;
@@ -104,6 +107,21 @@
   }
   #prName {
     font-size: 1rem;
+  }
+
+  .orderSummary {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .orderSummary img {
+    width: 50%;
+    margin-bottom: 1rem;
+  }
+
+  .orderSummary .infoProduit {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0.3rem;
   }
 }
 
@@ -189,7 +207,7 @@
   }
 
   #panier {
-    height: 110vh;
+    /* height: 110vh; */
   }
   .contentPanier {
     padding-bottom: 7rem;
@@ -205,5 +223,18 @@
   .gridContent p,
   .gridContent strong {
     font-size: 1.4rem;
+  }
+
+  .orderSummary {
+  }
+  .orderSummary img {
+    width: 20%;
+    margin-bottom: 1rem;
+  }
+
+  .orderSummary .infoProduit {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0.3rem;
   }
 }

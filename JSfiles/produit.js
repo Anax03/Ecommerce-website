@@ -13,6 +13,8 @@ let totalPrice = 0;
 let priceUnity;
 let id;
 
+//localStorage.removeItem('ProduitData');
+
 let numberInput = Number(inputNmbr.value);
 
 // Retourner les proprietes du produits
@@ -20,6 +22,8 @@ let nmbr = Number(localStorage.getItem('name'));
 returnProduit(nmbr);
 
 //Functions
+
+// request get pour recuperer produit
 function returnProduit(numero) {
   const fetchApi = new FetchApi();
 
@@ -41,9 +45,9 @@ function returnProduit(numero) {
     }
   });
 }
-console.log(btnPlus);
 
 // Buttons
+//button Plus
 btnPlus.addEventListener('click', (e) => {
   e.preventDefault();
 
@@ -56,6 +60,7 @@ btnPlus.addEventListener('click', (e) => {
   }
 });
 
+//button minus
 btnMinus.addEventListener('click', (e) => {
   e.preventDefault();
   if (numberInput > 1) {
@@ -69,15 +74,79 @@ btnMinus.addEventListener('click', (e) => {
 // send to panier
 valider.addEventListener('click', (e) => {
   e.preventDefault();
-  localStorage.setItem('produitId', id);
-  localStorage.setItem('produitName', produitName.innerText);
-  localStorage.setItem('produitImage', produitImage.src);
-  localStorage.setItem('produitQuantity', inputNmbr.value);
-  localStorage.setItem('produitTotalPrice', totalPrice);
-  localStorage.setItem('produitDescript', produitDescription.innerText);
-  localStorage.setItem(
-    'produitVarnish',
-    produitVarnish.options[produitVarnish.selectedIndex].text
-  );
-  location.href = 'panier.html';
+  achat();
 });
+
+//Function tableau de plusieurs choix de l'achat
+
+function achat() {
+  let obj = {
+    id: id,
+    produitName: produitName.innerText,
+    produitImage: produitImage.src,
+    produitQuantity: inputNmbr.value,
+    produitTotalPrice: totalPrice,
+    produitDescript: produitDescription.innerText,
+    produitVarnish: [
+      {
+        varnish: produitVarnish.options[produitVarnish.selectedIndex].text,
+        quantity: inputNmbr.value,
+      },
+    ],
+  };
+  if (localStorage.getItem('ProduitData') != null) {
+    let content = localStorage.getItem('ProduitData');
+    let array = JSON.parse(content);
+    oneOne(array, obj);
+
+    localStorage.setItem('ProduitData', JSON.stringify(array));
+  } else {
+    let Data = JSON.stringify(obj);
+    localStorage.setItem('ProduitData', `[${Data}]`);
+  }
+
+  location.href = 'panier.html';
+}
+
+// Function pas répéter les mêmes produits dans le panier
+function oneOne(array, obj) {
+  let flag = true;
+  let flag2 = true;
+
+  for (let i = 0; i < array.length; i++) {
+    if (array[i].produitName === obj.produitName) {
+      let nmbr1 = Number(array[i].produitQuantity);
+
+      let nmbr2 = Number(obj.produitQuantity);
+
+      let nmbr3 = nmbr1 + nmbr2;
+      array[i].produitQuantity = nmbr3;
+
+      let objVarnish = obj.produitVarnish[0];
+      array[i].produitTotalPrice += obj.produitTotalPrice;
+
+      array[i].produitVarnish.map((e) => {
+        if (e.varnish === objVarnish.varnish) {
+          let a = Number(e.quantity);
+          let b = Number(objVarnish.quantity);
+          e.quantity = a + b;
+
+          flag2 = false;
+        }
+      });
+
+      if (flag2 === true && i === array.length - 1) {
+        array[i].produitVarnish.push({
+          varnish: objVarnish.varnish,
+          quantity: objVarnish.quantity,
+        });
+      }
+
+      flag = false;
+      break;
+    }
+  }
+  if (flag === true) {
+    array.push(obj);
+  }
+}

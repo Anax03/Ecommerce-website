@@ -27,23 +27,26 @@
     <!-- Panier content -->
     <section id="panier">
       <h1>Récapitulatif de votre commande :</h1>
-      <div class="contentPanier">
-        <img src="#" alt="produit" id="ProduitPanier" />
-        <div class="PanierInfo">
-          <div class="first">
-            <h2 id="panierTitre">Titre produit</h2>
-            <input type="number" name="numero" id="quantity" />
-            <h3 id="priceProduit">$ 200</h3>
-          </div>
-          <div class="second">
-            <p class="des">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae
-              veniam at non.
-            </p>
-            <i class="far fa-trash-alt"></i>
+      <div class="nosPaniers">
+        <div class="contentPanier">
+          <img src="#" alt="produit" id="ProduitPanier" />
+          <div class="PanierInfo">
+            <div class="first">
+              <h2 id="panierTitre">Titre produit</h2>
+              <input type="number" name="numero" id="quantity" readonly />
+              <h3 id="priceProduit">$ 200</h3>
+            </div>
+            <div class="second">
+              <p class="des">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae
+                veniam at non.
+              </p>
+              <i class="far fa-trash-alt"></i>
+            </div>
           </div>
         </div>
       </div>
+
       <h3 id="totalPRice">Total price : $ 300</h3>
       <div class="contactForm">
         <div class="nomprenom">
@@ -68,6 +71,17 @@
         <input type="text" name="pays" id="pays" maxlength="25" />
         <button type="submit" id="confirmButton">Confirmer</button>
       </div>
+    </section>
+    <section id="panierVide">
+      <img src="./images/empty-cart.png" alt="Paniervide" />
+      <h1>VOTRE PANNIER EST VIDE</h1>
+      <p>
+        vous n'avez aucun article dans votre panier,allons acheter quelque
+        chose!
+      </p>
+      <button id="shopNow" onclick="location.href='index.html'">
+        Shop Now
+      </button>
     </section>
     <!-- Footer -->
     <footer>
