@@ -78,7 +78,6 @@ btnConfirmer.addEventListener('click', (e) => {
 // function pour ajouter les details de l'achat
 function infoProduit() {
   let arrayProduit = JSON.parse(localStorage.getItem('ProduitData'));
-  console.log(arrayProduit);
 
   if (arrayProduit != null) {
     for (let i = 0; i < arrayProduit.length; i++) {
@@ -125,7 +124,6 @@ function includeNumber(Input) {
   for (let i = 0; i < 10; i++) {
     if (nom.includes(i)) {
       Input.value = '';
-      console.log(Input.style.border);
 
       Input.style.border = '1px solid red';
       Input.placeholder = 'Entre a valid value';
@@ -183,12 +181,9 @@ function getID(id) {
   apiFetch
     .get(`http://localhost:3000/api/furniture/${id}`)
     .then((res) => {
-      console.log(res);
       return res.orderId;
     })
-    .catch((err) => {
-      console.log(err);
-    });
+    .catch((err) => {});
 }
 
 /// Post formulaire
@@ -214,12 +209,9 @@ function postPanier() {
       products: ids,
     })
     .then((data) => {
-      console.log(data);
       localStorage.setItem('Identifiant', JSON.stringify(data.orderId));
     })
-    .catch((err) => {
-      console.log(err);
-    });
+    .catch((err) => {});
 }
 
 function returnData() {
@@ -227,8 +219,6 @@ function returnData() {
   let varnishlist = new Array();
   let quantitypr = [];
   let image = [];
-
-  console.log(arrayData);
 
   for (let i = 0; i < arrayData.length; i++) {
     let characters = '';
@@ -251,8 +241,3 @@ function returnData() {
 
   return JSON.stringify(a);
 }
-
-console.log(returnData());
-
-let arrayData = JSON.parse(localStorage.getItem('ProduitData'));
-console.log(arrayData);

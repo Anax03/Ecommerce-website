@@ -15,12 +15,6 @@ image.src = localStorage.getItem('produitImage');
 quantity.innerText = localStorage.getItem('produitQuantity');
 varnish.innerText = localStorage.getItem('produitVarnish');
 
-console.log(localStorage.getItem('itemConfirmation'));
-
-console.log(ObjData);
-console.log(orderSummary.children[1]);
-console.log(container);
-
 orderSUMMARY();
 /// orderSummary
 function orderSUMMARY() {
