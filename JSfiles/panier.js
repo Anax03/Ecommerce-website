@@ -253,13 +253,12 @@ btnConfirmer.addEventListener('click', (e) => {
     if (window.confirm('Sure?')) {
       postPanier();
 
-      console.log(localStorage.getItem('Identifiant'));
       localStorage.setItem('email', inputEmail.value);
 
       const datax = returnData();
       localStorage.setItem('itemConfirmation', datax);
-      //localStorage.removeItem('ProduitData');
-      //location.href = 'confirmation.html';
+      localStorage.removeItem('ProduitData');
+      location.href = 'confirmation.html';
     }
   }
 });
