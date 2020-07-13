@@ -41,6 +41,8 @@ btnConfirmer.addEventListener('click', (e) => {
   includeNumber(inputPrenom);
   includeNumber(inputPays);
   includeNumber(inputVille);
+  includeLettres(inputPostal);
+  includeLettres(inputTele);
   lengthNmbrInput(inputPostal);
   validEmail(inputEmail);
 
@@ -135,6 +137,25 @@ function includeNumber(Input) {
     Input.style.border = '1px solid #c0c0c0';
   }
 }
+
+function includeLettres(Input) {
+  let nom = Input.value;
+  for (let i = 0; i < 10; i++) {
+    if (!nom.includes(i)) {
+      Input.value = '';
+
+      Input.style.border = '1px solid red';
+      Input.placeholder = 'Entre a valid value';
+
+      break;
+    }
+  }
+  if (Input.value.length > 0) {
+    Input.style.border = '1px solid #c0c0c0';
+  }
+}
+
+//Function qui n'autorise pas des lettres
 //Function length input
 function lengthNmbrInput(a) {
   a.addEventListener('keypress', (e) => {
