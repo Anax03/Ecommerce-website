@@ -26,6 +26,7 @@ const btnConfirmer = document.getElementById('confirmButton');
 
 //Other variables
 let totalPricevar = 0;
+let order = '05bb31e0-c549-11ea-a80e-3df20ca5779f';
 
 // ajouter les infos du produits dans le panier
 infoProduit();
@@ -187,7 +188,7 @@ function postPanier() {
       products: ids,
     })
     .then((data) => {
-      localStorage.setItem('Identifiant', data.orderId);
+      order = data.orderId;
     })
     .catch((err) => {});
 }
@@ -220,8 +221,6 @@ function returnData() {
   return JSON.stringify(a);
 }
 
-localStorage.removeItem('Identifiant');
-
 //Button confirmer
 btnConfirmer.addEventListener('click', (e) => {
   e.preventDefault();
@@ -252,9 +251,9 @@ btnConfirmer.addEventListener('click', (e) => {
   if (flag === true) {
     if (window.confirm('Sure?')) {
       postPanier();
-
       localStorage.setItem('email', inputEmail.value);
-
+      localStorage.setItem('Identifiant', order);
+      console.log(localStorage.getItem('Identifiant'));
       const datax = returnData();
       localStorage.setItem('itemConfirmation', datax);
       localStorage.removeItem('ProduitData');
@@ -262,3 +261,5 @@ btnConfirmer.addEventListener('click', (e) => {
     }
   }
 });
+
+//localStorage.removeItem('Identifiant');

@@ -12,7 +12,7 @@ class FetchApi {
       body: JSON.stringify(obj),
     });
     const data = await res.json();
-    return await data;
+    return data;
   }
 }
 
