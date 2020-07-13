@@ -11,8 +11,8 @@ class FetchApi {
       headers: { 'Content-type': 'application/json' },
       body: JSON.stringify(obj),
     });
-    const data = await res.json();
-    return data;
+
+    return await res.json();
   }
 }
 

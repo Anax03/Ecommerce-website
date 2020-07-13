@@ -165,34 +165,6 @@ function getID(id) {
     });
 }
 
-/// Post formulaire
-
-function postPanier() {
-  const apiFetch = new FetchApi();
-
-  let arrayProduit = JSON.parse(localStorage.getItem('ProduitData'));
-  let ids = new Array();
-  arrayProduit.map((e) => {
-    ids.push(e.id);
-  });
-
-  apiFetch
-    .post('http://localhost:3000/api/furniture/order', {
-      contact: {
-        firstName: inputPrenom.value,
-        lastName: inputNom.value,
-        address: inputAdresse.value,
-        city: inputVille.value,
-        email: inputEmail.value,
-      },
-      products: ids,
-    })
-    .then((data) => {
-      order = data.orderId;
-    })
-    .catch((err) => {});
-}
-
 function returnData() {
   let arrayData = JSON.parse(localStorage.getItem('ProduitData'));
   let varnishlist = new Array();
@@ -222,7 +194,7 @@ function returnData() {
 }
 
 //Button confirmer
-btnConfirmer.addEventListener('click', (e) => {
+btnConfirmer.addEventListener('click', async (e) => {
   e.preventDefault();
   includeNumber(inputNom);
   includeNumber(inputPrenom);
@@ -250,10 +222,24 @@ btnConfirmer.addEventListener('click', (e) => {
   });
   if (flag === true) {
     if (window.confirm('Sure?')) {
-      postPanier();
+      const post = async (url, obj) => {
+        const res = await fetch(url, {
+          method: 'POST',
+          headers: { 'Content-type': 'application/json' },
+          body: JSON.stringify(obj),
+        });
+
+        return await res.json();
+      };
+      const response = await post(
+        'http://localhost:3000/api/furniture/order',
+        obj()
+      );
+
+      localStorage.setItem('Identifiant', response.orderId);
+
       localStorage.setItem('email', inputEmail.value);
-      localStorage.setItem('Identifiant', order);
-      console.log(localStorage.getItem('Identifiant'));
+
       const datax = returnData();
       localStorage.setItem('itemConfirmation', datax);
       localStorage.removeItem('ProduitData');
@@ -262,4 +248,24 @@ btnConfirmer.addEventListener('click', (e) => {
   }
 });
 
-//localStorage.removeItem('Identifiant');
+//Object contact et array du produits
+
+function obj() {
+  let arrayProduit = JSON.parse(localStorage.getItem('ProduitData'));
+  let ids = new Array();
+  arrayProduit.map((e) => {
+    ids.push(e.id);
+  });
+
+  const object = {
+    contact: {
+      firstName: inputPrenom.value,
+      lastName: inputNom.value,
+      address: inputAdresse.value,
+      city: inputVille.value,
+      email: inputEmail.value,
+    },
+    products: ids,
+  };
+  return object;
+}
