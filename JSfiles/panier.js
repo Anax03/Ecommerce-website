@@ -34,48 +34,6 @@ infoProduit();
 lengthNmbrInput(inputPostal);
 lengthNmbrInput(inputTele);
 
-//Button confirmer
-btnConfirmer.addEventListener('click', (e) => {
-  e.preventDefault();
-  includeNumber(inputNom);
-  includeNumber(inputPrenom);
-  includeNumber(inputPays);
-  includeNumber(inputVille);
-  includeLettres(inputPostal);
-  includeLettres(inputTele);
-  lengthNmbrInput(inputPostal);
-  validEmail(inputEmail);
-
-  let array = [
-    inputNom.value.length == 0,
-    inputPrenom.value.length == 0,
-    inputPays.value.length == 0,
-    inputVille.value.length == 0,
-    inputPostal.value.length == 0,
-    inputAdresse.value.length == 0,
-    inputEmail.value.length == 0,
-    priceProduit.innerHTML == 0,
-  ];
-
-  let flag = true;
-  array.forEach((element) => {
-    if (element === true) {
-      flag = false;
-    }
-  });
-  if (flag === true) {
-    if (window.confirm('Sure?')) {
-      postPanier();
-
-      localStorage.setItem('email', inputEmail.value);
-
-      const datax = returnData();
-      localStorage.setItem('itemConfirmation', datax);
-      localStorage.removeItem('ProduitData');
-      location.href = 'confirmation.html';
-    }
-  }
-});
 //Functions
 // function pour ajouter les details de l'achat
 function infoProduit() {
@@ -138,24 +96,21 @@ function includeNumber(Input) {
   }
 }
 
-function includeLettres(Input) {
-  let nom = Input.value;
-  for (let i = 0; i < 10; i++) {
-    if (!nom.includes(i)) {
-      Input.value = '';
-
-      Input.style.border = '1px solid red';
-      Input.placeholder = 'Entre a valid value';
-
-      break;
-    }
-  }
-  if (Input.value.length > 0) {
-    Input.style.border = '1px solid #c0c0c0';
-  }
-}
-
 //Function qui n'autorise pas des lettres
+
+inputPostal.onkeydown = function (e) {
+  if ((e.keyCode < 48 || e.keyCode > 57) && e.keyCode != 8) {
+    return false;
+  }
+  return true;
+};
+inputTele.onkeydown = function (e) {
+  if ((e.keyCode < 48 || e.keyCode > 57) && e.keyCode != 8) {
+    return false;
+  }
+  return true;
+};
+
 //Function length input
 function lengthNmbrInput(a) {
   a.addEventListener('keypress', (e) => {
@@ -204,7 +159,9 @@ function getID(id) {
     .then((res) => {
       return res.orderId;
     })
-    .catch((err) => {});
+    .catch((err) => {
+      console.log(err);
+    });
 }
 
 /// Post formulaire
@@ -230,7 +187,7 @@ function postPanier() {
       products: ids,
     })
     .then((data) => {
-      localStorage.setItem('Identifiant', JSON.stringify(data.orderId));
+      localStorage.setItem('Identifiant', data.orderId);
     })
     .catch((err) => {});
 }
@@ -262,3 +219,47 @@ function returnData() {
 
   return JSON.stringify(a);
 }
+
+localStorage.removeItem('Identifiant');
+
+//Button confirmer
+btnConfirmer.addEventListener('click', (e) => {
+  e.preventDefault();
+  includeNumber(inputNom);
+  includeNumber(inputPrenom);
+  includeNumber(inputPays);
+  includeNumber(inputVille);
+  lengthNmbrInput(inputPostal);
+  validEmail(inputEmail);
+
+  let array = [
+    inputNom.value.length == 0,
+    inputPrenom.value.length == 0,
+    inputPays.value.length == 0,
+    inputVille.value.length == 0,
+    inputPostal.value.length == 0,
+    inputAdresse.value.length == 0,
+    inputEmail.value.length == 0,
+    priceProduit.innerHTML == 0,
+  ];
+
+  let flag = true;
+  array.forEach((element) => {
+    if (element === true) {
+      flag = false;
+    }
+  });
+  if (flag === true) {
+    if (window.confirm('Sure?')) {
+      postPanier();
+
+      console.log(localStorage.getItem('Identifiant'));
+      localStorage.setItem('email', inputEmail.value);
+
+      const datax = returnData();
+      localStorage.setItem('itemConfirmation', datax);
+      //localStorage.removeItem('ProduitData');
+      //location.href = 'confirmation.html';
+    }
+  }
+});

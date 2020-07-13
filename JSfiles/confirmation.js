@@ -9,7 +9,7 @@ const container = document.querySelector('.containerSummary');
 const ObjData = JSON.parse(localStorage.getItem('itemConfirmation'));
 
 email.innerText = localStorage.getItem('email');
-idProduit.innerText = JSON.parse(localStorage.getItem('Identifiant'));
+idProduit.innerText = localStorage.getItem('Identifiant');
 prixTotal.innerText = ObjData.prixTotal;
 image.src = localStorage.getItem('produitImage');
 quantity.innerText = localStorage.getItem('produitQuantity');
