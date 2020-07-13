@@ -211,9 +211,6 @@
     width: 50%;
   }
 
-  #panier {
-    /* height: 110vh; */
-  }
   .contentPanier {
     padding-bottom: 7rem;
   }
@@ -230,8 +227,6 @@
     font-size: 1.4rem;
   }
 
-  .orderSummary {
-  }
   .orderSummary img {
     width: 20%;
     margin-bottom: 1rem;
