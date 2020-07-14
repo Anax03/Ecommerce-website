@@ -80,45 +80,40 @@ function infoProduit() {
 }
 
 // Pas de numeros dans prenom Nom Pays ville (en keypress)
+function noNumeros(event) {
+  let onlyChars = /^([^0-9]*)$/;
+  if (!onlyChars.test(event.key)) {
+    event.preventDefault();
+  }
+}
 
 inputPrenom.addEventListener('keypress', (event) => {
-  let onlyChars = /^([^0-9]*)$/;
-  if (!onlyChars.test(event.key)) {
-    event.preventDefault();
-  }
+  noNumeros(event);
 });
 inputNom.addEventListener('keypress', (event) => {
-  let onlyChars = /^([^0-9]*)$/;
-  if (!onlyChars.test(event.key)) {
-    event.preventDefault();
-  }
+  noNumeros(event);
 });
 inputPays.addEventListener('keypress', (event) => {
-  let onlyChars = /^([^0-9]*)$/;
-  if (!onlyChars.test(event.key)) {
-    event.preventDefault();
-  }
+  noNumeros(event);
 });
 inputVille.addEventListener('keypress', (event) => {
-  let onlyChars = /^([^0-9]*)$/;
-  if (!onlyChars.test(event.key)) {
-    event.preventDefault();
-  }
+  noNumeros(event);
 });
 
 //Function qui n'autorise pas des lettres
 
-inputPostal.addEventListener('keypress', (event) => {
+function noLettres(event) {
   let onlyNumber = /[0-9\/]+/;
   if (!onlyNumber.test(event.key)) {
     event.preventDefault();
   }
+}
+
+inputPostal.addEventListener('keypress', (event) => {
+  noLettres(event);
 });
 inputTele.addEventListener('keypress', (event) => {
-  let onlyNumber = /[0-9\/]+/;
-  if (!onlyNumber.test(event.key)) {
-    event.preventDefault();
-  }
+  noLettres(event);
 });
 
 //Function length input
