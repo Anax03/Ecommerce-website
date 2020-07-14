@@ -175,14 +175,14 @@ function formatDonnes() {
     quantitypr.push(quant);
   }
 
-  const a = {
+  const ObjetRetourne = {
     prixTotal: totalPRice.innerText.replace('Total price : ', ''),
     quantity: quantitypr,
     varnish: varnishlist,
     images: image,
   };
 
-  return JSON.stringify(a);
+  return JSON.stringify(ObjetRetourne);
 }
 
 //Button confirmer pour valider la commande

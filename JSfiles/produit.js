@@ -113,21 +113,21 @@ function Format(array, obj) {
 
   for (let i = 0; i < array.length; i++) {
     if (array[i].produitName === obj.produitName) {
-      let nmbr1 = Number(array[i].produitQuantity);
+      let quantityObjArray = Number(array[i].produitQuantity);
 
-      let nmbr2 = Number(obj.produitQuantity);
+      let quantitynewObj = Number(obj.produitQuantity);
 
-      let nmbr3 = nmbr1 + nmbr2;
-      array[i].produitQuantity = nmbr3;
+      let quantityTotal = quantityObjArray + quantitynewObj;
+      array[i].produitQuantity = quantityTotal;
 
       let objVarnish = obj.produitVarnish[0];
       array[i].produitTotalPrice += obj.produitTotalPrice;
 
       array[i].produitVarnish.map((e) => {
         if (e.varnish === objVarnish.varnish) {
-          let a = Number(e.quantity);
-          let b = Number(objVarnish.quantity);
-          e.quantity = a + b;
+          let quantityProduit = Number(e.quantity);
+          let QuantityVernis = Number(objVarnish.quantity);
+          e.quantity = quantityProduit + QuantityVernis;
 
           flag2 = false;
         }
