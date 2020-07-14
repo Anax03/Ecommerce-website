@@ -31,8 +31,8 @@ function orderSUMMARY() {
   for (let i = 1; i < ObjData.quantity.length; i++) {
     let order = orderSummary.cloneNode(true);
     order.children[0].src = ObjData.images[i];
-    orderSummary.children[1].children[1].innerText = ObjData.quantity[i];
-    orderSummary.children[1].children[3].innerText = ObjData.varnish[i];
+    order.children[1].children[1].innerText = ObjData.quantity[i];
+    order.children[1].children[3].innerText = ObjData.varnish[i];
     container.appendChild(order);
   }
 }
