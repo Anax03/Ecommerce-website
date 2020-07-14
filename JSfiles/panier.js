@@ -6,8 +6,8 @@ const priceProduit = document.getElementById('priceProduit');
 const totalPRice = document.getElementById('totalPRice');
 const quantityProduit = document.getElementById('quantity');
 const description = document.getElementsByClassName('des');
-const panierAll = document.querySelector('.nosPaniers');
-const contentPanier = document.querySelector('.contentPanier');
+const divPanier = document.querySelector('.nosPaniers');
+const contenuDupanier = document.querySelector('.contentPanier');
 const panierVide = document.querySelector('#panierVide');
 const panierPlein = document.querySelector('#panier');
 const btnRemove = document.querySelectorAll('.fa-trash-alt');
@@ -53,7 +53,7 @@ function infoProduit() {
         totalPricevar = Number(arrayProduit[0].produitTotalPrice);
         totalPRice.innerText = `Total price : € ${totalPricevar}`;
       } else {
-        let op = contentPanier.cloneNode(true);
+        let op = contenuDupanier.cloneNode(true);
         op.children[0].src = arrayProduit[i].produitImage;
 
         op.children[1].children[0].children[0].innerText =
@@ -73,44 +73,53 @@ function infoProduit() {
           }
         );
 
-        panierAll.appendChild(op);
+        divPanier.appendChild(op);
       }
     }
   }
 }
 
-// Function qui n'autorise pas d'avoir des numeros
-function includeNumber(Input) {
-  let nom = Input.value;
-  for (let i = 0; i < 10; i++) {
-    if (nom.includes(i)) {
-      Input.value = '';
+// Pas de numeros dans prenom Nom Pays ville (en keypress)
 
-      Input.style.border = '1px solid red';
-      Input.placeholder = 'Entre a valid value';
-
-      break;
-    }
+inputPrenom.addEventListener('keypress', (event) => {
+  let onlyChars = /^([^0-9]*)$/;
+  if (!onlyChars.test(event.key)) {
+    event.preventDefault();
   }
-  if (Input.value.length > 0) {
-    Input.style.border = '1px solid #c0c0c0';
+});
+inputNom.addEventListener('keypress', (event) => {
+  let onlyChars = /^([^0-9]*)$/;
+  if (!onlyChars.test(event.key)) {
+    event.preventDefault();
   }
-}
+});
+inputPays.addEventListener('keypress', (event) => {
+  let onlyChars = /^([^0-9]*)$/;
+  if (!onlyChars.test(event.key)) {
+    event.preventDefault();
+  }
+});
+inputVille.addEventListener('keypress', (event) => {
+  let onlyChars = /^([^0-9]*)$/;
+  if (!onlyChars.test(event.key)) {
+    event.preventDefault();
+  }
+});
 
 //Function qui n'autorise pas des lettres
 
-inputPostal.onkeydown = function (e) {
-  if ((e.keyCode < 48 || e.keyCode > 57) && e.keyCode != 8) {
-    return false;
+inputPostal.addEventListener('keypress', (event) => {
+  let onlyNumber = /[0-9\/]+/;
+  if (!onlyNumber.test(event.key)) {
+    event.preventDefault();
   }
-  return true;
-};
-inputTele.onkeydown = function (e) {
-  if ((e.keyCode < 48 || e.keyCode > 57) && e.keyCode != 8) {
-    return false;
+});
+inputTele.addEventListener('keypress', (event) => {
+  let onlyNumber = /[0-9\/]+/;
+  if (!onlyNumber.test(event.key)) {
+    event.preventDefault();
   }
-  return true;
-};
+});
 
 //Function length input
 function lengthNmbrInput(a) {
@@ -132,7 +141,8 @@ function validEmail(vld) {
   }
 }
 
-// Remove btn index 0
+//supprimer 1ere produit du panier si l'utlisateur le souhaite
+
 btnRemove[0].addEventListener('click', (e) => {
   removeAchat(0, e);
 });
@@ -151,21 +161,8 @@ function removeAchat(nmbr, e) {
   }
 }
 
-/// get ID
-
-function getID(id) {
-  const apiFetch = new FetchApi();
-  apiFetch
-    .get(`http://localhost:3000/api/furniture/${id}`)
-    .then((res) => {
-      return res.orderId;
-    })
-    .catch((err) => {
-      console.log(err);
-    });
-}
-
-function returnData() {
+// le format des donnes envoyer au confirmation page
+function formatDonnes() {
   let arrayData = JSON.parse(localStorage.getItem('ProduitData'));
   let varnishlist = new Array();
   let quantitypr = [];
@@ -193,13 +190,10 @@ function returnData() {
   return JSON.stringify(a);
 }
 
-//Button confirmer
+//Button confirmer pour valider la commande
+
 btnConfirmer.addEventListener('click', async (e) => {
   e.preventDefault();
-  includeNumber(inputNom);
-  includeNumber(inputPrenom);
-  includeNumber(inputPays);
-  includeNumber(inputVille);
   lengthNmbrInput(inputPostal);
   validEmail(inputEmail);
 
@@ -233,24 +227,24 @@ btnConfirmer.addEventListener('click', async (e) => {
       };
       const response = await post(
         'http://localhost:3000/api/furniture/order',
-        obj()
+        ObjectPost()
       );
 
       localStorage.setItem('Identifiant', response.orderId);
 
       localStorage.setItem('email', inputEmail.value);
 
-      const datax = returnData();
-      localStorage.setItem('itemConfirmation', datax);
+      const dataJSON = formatDonnes();
+      localStorage.setItem('itemConfirmation', dataJSON);
       localStorage.removeItem('ProduitData');
       location.href = 'confirmation.html';
     }
   }
 });
 
-//Object contact et array du produits
+//Object contact et array du produits envoyer au back end
 
-function obj() {
+function ObjectPost() {
   let arrayProduit = JSON.parse(localStorage.getItem('ProduitData'));
   let ids = new Array();
   arrayProduit.map((e) => {

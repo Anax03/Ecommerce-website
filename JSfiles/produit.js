@@ -13,8 +13,6 @@ let totalPrice = 0;
 let priceUnity;
 let id;
 
-//localStorage.removeItem('ProduitData');
-
 let numberInput = Number(inputNmbr.value);
 
 // Retourner les proprietes du produits
@@ -97,7 +95,7 @@ function achat() {
   if (localStorage.getItem('ProduitData') != null) {
     let content = localStorage.getItem('ProduitData');
     let array = JSON.parse(content);
-    oneOne(array, obj);
+    Format(array, obj);
 
     localStorage.setItem('ProduitData', JSON.stringify(array));
   } else {
@@ -109,7 +107,7 @@ function achat() {
 }
 
 // Function pas répéter les mêmes produits dans le panier
-function oneOne(array, obj) {
+function Format(array, obj) {
   let flag = true;
   let flag2 = true;
 
